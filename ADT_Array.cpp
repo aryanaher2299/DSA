@@ -86,6 +86,10 @@ int myArray :: searchIndexofValue(int value){
     return -1;
 }
 
+// Destructor that dynamically deallocates the memory. delete[] ptr for the dynamically deallocated array
+myArray :: ~myArray(){
+    delete[] ptr;
+}
 
 int main(){
 
@@ -107,7 +111,7 @@ int main(){
     newArray.displayArray();
     //cout<<newArray.getValueatIndex(3)<<endl;
     //cout<<newArray.searchIndexofValue(20);
-    
+
     return 0;
     
 }

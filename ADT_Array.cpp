@@ -38,12 +38,22 @@ class myArray{
 //deleteByIndex() deletes the value at given index
     void deleteByIndex(int index){
         ptr[index] = 0;
+        this->adjustArray(index);
     }
 
 //deleteByValue deletes the element by searching its index and deleting the given element value
     void deleteByValue(int value){
         int index = this->searchIndexofValue(value);
         ptr[index] = 0;
+        this->adjustArray(index);
+    }
+
+//adjustArray() adjusts the ith deleted element spot by shifting elements to fill ith position.
+    void adjustArray(int index){
+        for(int i=index; i<totalSize-1; i++){
+            ptr[i] = ptr[i+1];
+        }
+        this->insert(totalSize-1, 0);
     }
 
 };
@@ -80,24 +90,23 @@ int myArray :: searchIndexofValue(int value){
 int main(){
 
     myArray newArray(4);
-    newArray.insert(3, 20);
     newArray.insert(0, 10);
-    newArray.insert(2, 190);
     newArray.insert(1, 90);
+    newArray.insert(2, 190);
+    newArray.insert(3, 20);
     //newArray.displayArray();
     
     newArray.displayArray();
     cout<<endl;
     newArray.deleteByIndex(2);
-    cout<<newArray.getValueatIndex(2)<<endl;
+   // cout<<newArray.getValueatIndex(2)<<endl;
 
-    newArray.deleteByValue(20);
-    cout<<newArray.getValueatIndex(3)<<endl;
+    //newArray.deleteByValue(20);
+    //cout<<newArray.getValueatIndex(3)<<endl;
 
     newArray.displayArray();
     //cout<<newArray.getValueatIndex(3)<<endl;
     //cout<<newArray.searchIndexofValue(20);
-
     
     return 0;
     

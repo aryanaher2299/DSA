@@ -2,12 +2,15 @@
 #include<iostream>
 using namespace std;
 
+
+//Creating a class of my Array with the following parameters
 class myArray{
     private:
     int totalSize;
     int usedSize;
     int* ptr;
 
+//Constructor and defining some methods
     public:
     myArray(int givenSize){
         totalSize = givenSize;
@@ -17,16 +20,27 @@ class myArray{
         }
     };
 
+//getSize() returns the total size of the array
     int getsize();
+
+//insert() adds the element at the given index 
     void insert(int index, int num);
+
+//displayArray() displays the entire array elements
     void displayArray();
+
+//getValueatIndex returns the value at given index
     int getValueatIndex(int index);
+
+//searchIndexofValue() returns value of index for given value
     int searchIndexofValue(int value);
 
+//deleteByIndex() deletes the value at given index
     void deleteByIndex(int index){
         ptr[index] = 0;
     }
 
+//deleteByValue deletes the element by searching its index and deleting the given element value
     void deleteByValue(int value){
         int index = this->searchIndexofValue(value);
         ptr[index] = 0;
@@ -52,7 +66,6 @@ void myArray :: displayArray(){
             cout<<ptr[i]<<endl;
         }
 }
-
 
 int myArray :: searchIndexofValue(int value){
     for(int i = 0; i<totalSize; i++){

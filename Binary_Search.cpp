@@ -42,12 +42,37 @@ void displayArray(int myArray[5], int size){
         cout<<myArray[i]<<endl;
     }
 }
+
+//Recursive Binary Search
+string recursiveBinarySearch(int myArray[5], int low, int high, int element){
+    int mid = 0;
+
+    while(low<=high){
+        mid = (low+high)/2;
+
+        if(element==myArray[mid]){
+            return "Match";
+            break;
+        }
+        else if(element<myArray[mid]){
+            high = mid - 1;
+            recursiveBinarySearch(myArray, low, high, element);
+        }
+        else{
+            low = mid +1 ;
+            recursiveBinarySearch(myArray, low, high, element);
+        }
+    }
+    return "Not Found!!!";
+}
+
 int main(){
     
     int myArray[5] = {54, 76, 89, 92, 126};
-    int n = 5;
+    int n = sizeof(myArray)/sizeof(myArray[0]);
    // displayArray(myArray, 5);
-    cout<<iterativeBinarySearch(myArray, 5, 92);
+    //cout<<iterativeBinarySearch(myArray, n, 92);
+    cout<<recursiveBinarySearch(myArray, 0, n-1, 54);
 
     return 0;
 }
